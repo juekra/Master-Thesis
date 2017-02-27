@@ -1,0 +1,5 @@
+jbpm\data\DataStore.class
+jbpm\application\InstanceCounter.class
+jbpm\data\ProcessInstanceData.class
+jbpm\application\Log.class
+jbpm\logic\Logic_Parallel2.class

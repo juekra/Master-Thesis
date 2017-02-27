@@ -1,0 +1,6 @@
+jbpm\data\DataStore.class
+jbpm\application\InstanceCounter.class
+jbpm\data\ProcessInstanceData.class
+jbpm\logic\InitProblem.class
+jbpm\application\Log.class
+com\sample\ProcessMain.class

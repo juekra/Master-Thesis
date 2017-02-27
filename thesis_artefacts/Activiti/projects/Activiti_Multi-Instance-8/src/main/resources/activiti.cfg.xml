@@ -1,0 +1,37 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+           <property name="processEngineConfiguration" ref="processEngineConfiguration" />
+         </bean>
+
+   <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+    <property name="jdbcUrl" value="jdbc:h2:tcp://localhost/~/activiti;DB_CLOSE_DELAY=1000" />
+    <property name="jdbcDriver" value="org.h2.Driver" />
+    <property name="jdbcUsername" value="sa" />
+    <property name="jdbcPassword" value="" />
+
+    <property name="databaseSchemaUpdate" value="false" />
+
+    <property name="jobExecutorActivate" value="false" />
+    <property name="asyncExecutorEnabled" value="true" />
+    <property name="asyncExecutorActivate" value="false" />
+    
+    <property name="asyncExecutor" ref="asyncExecutor" />
+  </bean>
+
+  <bean id="asyncExecutor" class="org.activiti.engine.impl.asyncexecutor.DefaultAsyncJobExecutor">
+    <property name="corePoolSize" value="10" />
+    <property name="maxPoolSize" value="50" />
+    <property name="keepAliveTime" value="3000" />
+    <property name="queueSize" value="200" />
+    <property name="maxTimerJobsPerAcquisition" value="2" />
+    <property name="maxAsyncJobsDuePerAcquisition" value="2" />
+    <property name="defaultAsyncJobAcquireWaitTimeInMillis" value="1000" />
+    <property name="defaultTimerJobAcquireWaitTimeInMillis" value="1000" />
+    <property name="timerLockTimeInMillis" value="60000" />
+    <property name="asyncJobLockTimeInMillis" value="60000" />
+</bean>
+
+</beans>
